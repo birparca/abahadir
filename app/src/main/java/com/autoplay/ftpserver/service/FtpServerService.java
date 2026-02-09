@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.autoplay.ftpserver.server.FtpServerConfig;
 import com.autoplay.ftpserver.server.FtpServerController;
+import com.autoplay.ftpserver.ui.FtpServerSettings;
 
 public class FtpServerService extends Service {
     public static final String ACTION_START = "com.autoplay.ftpserver.action.START";
@@ -53,7 +54,8 @@ public class FtpServerService extends Service {
     }
 
     private void startServer() {
-        FtpServerController.getInstance().start(getApplicationContext());
+        int port = FtpServerSettings.getPort(getApplicationContext());
+        FtpServerController.getInstance().start(getApplicationContext(), port);
     }
 
     private void stopServer() {
@@ -61,7 +63,8 @@ public class FtpServerService extends Service {
     }
 
     private Notification buildNotification() {
-        String contentText = "FTP sunucu " + FtpServerConfig.PORT + " portunda çalışıyor.";
+        int port = FtpServerSettings.getPort(getApplicationContext());
+        String contentText = "FTP sunucu " + port + " portunda çalışıyor.";
         return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Autoplay FTP Server")
                 .setContentText(contentText)

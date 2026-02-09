@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Autoplay FTP Server</string>
+    <string name="port_input_hint">Port (1-65535)</string>
+    <string name="port_hint">Aktif port: %1$d</string>
+    <string name="start_server">Sunucuyu Başlat</string>
+    <string name="stop_server">Sunucuyu Durdur</string>
+    <string name="invalid_port">Geçersiz port.</string>
+    <string name="server_starting">FTP sunucusu başlatılıyor.</string>
+    <string name="server_stopping">FTP sunucusu durduruluyor.</string>
+</resources>

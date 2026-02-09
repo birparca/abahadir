@@ -27,14 +27,14 @@ public final class FtpServerController {
         return instance;
     }
 
-    public synchronized void start(Context context) {
+    public synchronized void start(Context context, int port) {
         if (server != null && !server.isStopped()) {
             return;
         }
         try {
             FtpServerFactory serverFactory = new FtpServerFactory();
             ListenerFactory listenerFactory = new ListenerFactory();
-            listenerFactory.setPort(FtpServerConfig.PORT);
+            listenerFactory.setPort(port);
             serverFactory.addListener("default", listenerFactory.createListener());
 
             PropertiesUserManagerFactory userManagerFactory = new PropertiesUserManagerFactory();
@@ -59,7 +59,7 @@ public final class FtpServerController {
 
             server = serverFactory.createServer();
             server.start();
-            Log.i(TAG, "FTP server started on port " + FtpServerConfig.PORT);
+            Log.i(TAG, "FTP server started on port " + port);
         } catch (Exception e) {
             Log.e(TAG, "Failed to start FTP server", e);
         }
