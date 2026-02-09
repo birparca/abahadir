@@ -1,0 +1,37 @@
+plugins {
+    id("com.android.application")
+}
+
+android {
+    namespace = "com.autoplay.ftpserver"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.autoplay.ftpserver"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation("org.apache.ftpserver:ftpserver-core:1.1.1")
+    implementation("org.slf4j:slf4j-android:1.7.36")
+    implementation("androidx.core:core:1.12.0")
+}
